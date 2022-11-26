@@ -9,16 +9,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="latestearthquake-indonesia-by-rafiramdhani",
-    version="0.7",
+    version="0.9",
     author="Rafi Ramdhani",
-    author_email="crafiramdhani1122@gmail.com",
+    author_email="rafiramdhani1122@gmail.com",
     description="This package will get the latest earthquake from BMKG | Meteorological, Climatological, and "
                 "Geophysical Agency",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/017RAFIRAMDHANI/latest-indonesia-earth-quake.git",
     project_urls={
-        "Website": "https://github.com/017RAFIRAMDHANI/latest-indonesia-earth-quake.git",
+        "Website": "http://codingritrofficial.epizy.com/",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
