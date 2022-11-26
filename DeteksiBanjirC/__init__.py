@@ -5,7 +5,7 @@ MODULARISASI
 import requests
 from bs4 import BeautifulSoup
 
-class Bencana:
+class BencanaBahaya():
     def __init__(self,url,description):
 
        self.description = description
@@ -13,25 +13,21 @@ class Bencana:
        self.url = url
 
     def tampilkan_keterangan(self):
+
         print(self.description)
 
-    def bahan(self):
-        print('403')
-
-    def tampilkan_data(self):
-        print('403')
-
     def run(self):
-        self.bahan()
+        self.ekstraksi_data()
         self.tampilkan_data()
 
-class DeteksiGempaReal(Bencana):
-
+class GempaBahaya(BencanaBahaya):
     def __init__(self,url):
-        super(DeteksiGempaReal,self).__init__(url, 'Gempa Terkini')
-
-
-    def bahan(self):
+        super(GempaBahaya,self).__init__(url, 'Gempa Terkini')
+    def judul(self):
+        u = self.description2 ='hai'
+        print(u)
+    def ekstraksi_data(self):
+        self.description = 'd'
         try:
            content = requests.get(self.url)
         except Exception:
@@ -105,28 +101,18 @@ class DeteksiGempaReal(Bencana):
         print(f'Lokasi {self.result["lokasi"]}')
         print(f'{self.result["dirasakan"]}')
 
-    # def run(self):
-    #     self.bahan()
-    #     self.tampilkan_data()
 
-
-class BanjirTerkini(Bencana):
-    def __init__(self, url):
-        super(BanjirTerkini, self).__init__(url, 'Banjir Terkini')
-
+class GempaBahaya2(BencanaBahaya):
+    def __init__(self,url):
+        super(GempaBahaya2,self).__init__(url, 'Gempa Terkini2')
 
 if __name__ == '__main__':
-    gempa = DeteksiGempaReal('https://bmkg.go.id')
-    gempa.tampilkan_keterangan()
-    gempa.run()
-    # gempa.bahan()
-    # gempa.tampilkan_data()
 
-    banjir = BanjirTerkini('Not')
-    banjir.tampilkan_keterangan()
-    banjir.run()
+     gempa = GempaBahaya('https://bmkg.go.id')
+     gempa.tampilkan_keterangan()
+     gempa.judul()
+     gempa.run()
 
-    daftar_bencana = [gempa,banjir]
-    print('\nSemua bencana yang ada')
-    for bencana in daftar_bencana:
-        bencana.tampilkan_keterangan()
+     gempa = GempaBahaya2('NOT')
+     gempa.tampilkan_keterangan()
+

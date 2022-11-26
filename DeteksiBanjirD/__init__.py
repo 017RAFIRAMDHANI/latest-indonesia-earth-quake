@@ -5,33 +5,26 @@ MODULARISASI
 import requests
 from bs4 import BeautifulSoup
 
+
+
+
 class Bencana:
-    def __init__(self,url,description):
-
-       self.description = description
-       self.result = None
-       self.url = url
-
-    def tampilkan_keterangan(self):
-        print(self.description)
-
-    def bahan(self):
-        print('403')
-
-    def tampilkan_data(self):
-        print('403')
+    def __init__(self,url,d):
+        self.result = None
+        self.url = url
+        self.d = d
 
     def run(self):
-        self.bahan()
+        self.ekstraksi_data()
         self.tampilkan_data()
-
-class DeteksiGempaReal(Bencana):
-
+    def description(self):
+        print(self.d)
+class DeteksiBanjir(Bencana):
     def __init__(self,url):
-        super(DeteksiGempaReal,self).__init__(url, 'Gempa Terkini')
+        super(DeteksiBanjir, self).__init__(url,'s')
 
 
-    def bahan(self):
+    def ekstraksi_data(self):
         try:
            content = requests.get(self.url)
         except Exception:
@@ -39,6 +32,8 @@ class DeteksiGempaReal(Bencana):
         if content.status_code == 200:
 
             soup = BeautifulSoup(content.text, 'html.parser')
+
+
             result = soup.find('span',{'class':'waktu'})
             result = result.text.split(', ')
             tanggal = result[0]
@@ -105,28 +100,18 @@ class DeteksiGempaReal(Bencana):
         print(f'Lokasi {self.result["lokasi"]}')
         print(f'{self.result["dirasakan"]}')
 
-    # def run(self):
-    #     self.bahan()
-    #     self.tampilkan_data()
 
-
-class BanjirTerkini(Bencana):
-    def __init__(self, url):
-        super(BanjirTerkini, self).__init__(url, 'Banjir Terkini')
-
-
+class DeteksiGempa(Bencana):
+    def __init__(self,url):
+        super(DeteksiGempa, self).__init__(url,'m')
 if __name__ == '__main__':
-    gempa = DeteksiGempaReal('https://bmkg.go.id')
-    gempa.tampilkan_keterangan()
-    gempa.run()
-    # gempa.bahan()
-    # gempa.tampilkan_data()
+    bencana = DeteksiBanjir('https://bmkg.go.id')
+    bencana.run()
+    bencana.description()
 
-    banjir = BanjirTerkini('Not')
-    banjir.tampilkan_keterangan()
-    banjir.run()
+    bencana = DeteksiGempa('NOT')
+    bencana.description()
 
-    daftar_bencana = [gempa,banjir]
-    print('\nSemua bencana yang ada')
-    for bencana in daftar_bencana:
-        bencana.tampilkan_keterangan()
+
+
+
