@@ -67,7 +67,6 @@ def ekstraksi_data():
     else:
         return None
 
-
 def tampilkan_data(result):
     if result is None:
         print('data gagal')
