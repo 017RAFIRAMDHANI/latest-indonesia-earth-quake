@@ -2,7 +2,7 @@
 Aplikasi Gempa Terkini
 MODULARISASI
 """
-import requests as requests
+import requests
 from bs4 import BeautifulSoup
 
 
@@ -81,7 +81,6 @@ def tampilkan_data(result):
     print(f'Lokasi {result["lokasi"]}')
     print(f'{result["dirasakan"]}')
 
-
 if __name__ == '__main__':
-    data = ekstraksi_data();
+    data = ekstraksi_data()
     tampilkan_data(data)
