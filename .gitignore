@@ -1,6 +1,5 @@
 .idea/
 .api/
-.build-upload.bat/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
